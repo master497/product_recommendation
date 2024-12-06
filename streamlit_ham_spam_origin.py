@@ -14,6 +14,9 @@ import seaborn as sns
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import label_binarize
+import warnings
+
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # 1. Read data
 data = pd.read_csv("data1.csv")
@@ -21,9 +24,9 @@ data = pd.read_csv("data1.csv")
 source = data['noi_dung_binh_luan_sau_xu_ly']
 target = data['sentiment']
 # Positive = 2, Neutral = 1, Negative = 0
-target = target.replace("Positive", 2)
-target = target.replace("Neutral", 1)
-target = target.replace("Negative", 0)
+target = target.replace({"Positive": 2})
+target = target.replace({"Neutral": 1})
+target = target.replace({"Negative": 0})
 
 text_data = np.array(source)
 
@@ -94,7 +97,7 @@ if choice == 'Business Objective':
     ###### Classifying customer feedback is sentiment analysis. With the advancements in machine learning and natural language processing techniques, it is now possible to separate feedback with a high degree of accuracy.
     """)  
     st.write("""###### => Problem/ Requirement: Use Machine Learning algorithms in Python for customer feedback classification.""")
-    st.image("ham_spam.jpg")
+    st.image("sentiment.png")
 
 elif choice == 'Build Project':
     st.subheader("Build Project")
@@ -105,7 +108,7 @@ elif choice == 'Build Project':
     fig1 = sns.countplot(data=data[['sentiment']], x='sentiment')    
     st.pyplot(fig1.figure)
 
-    st.write("##### 3. Build model...")
+    st.write("##### 3. Build model")
     st.write("##### 4. Evaluation")
     st.code("Score train:"+ str(round(score_train,2)) + " vs Score test:" + str(round(score_test,2)))
     st.code("Accuracy:"+str(round(acc,2)))
