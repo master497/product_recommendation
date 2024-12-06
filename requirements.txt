@@ -1,11 +1,7 @@
-streamlit
+streamlit==1.40.2
 numpy==1.26.4
-pandas==1.5.3
-matplotlib
-seaborn
-scikit-learn
-pickle
-warning
-LogisticRegression
-underthesea
-tfidf
+pandas==2.1.4
+matplotlib==3.7.5
+seaborn==0.13.2
+scikit-learn==1.4.2
+underthesea==6.8.3
